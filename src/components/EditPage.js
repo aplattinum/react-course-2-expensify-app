@@ -2,8 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import ExpenseForm from './ExpenseForm';
 import { editExpense, removeExpense } from '../actions/expenses';
-import { render } from '@testing-library/react';
-
 //refactor editexpense page to a class based component
 //setup mapdispatchtoprops for edit expense and remove expense
 

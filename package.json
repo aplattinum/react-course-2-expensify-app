@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "engines": {
     "yarn": "1.13.0",
-    "node": "10.16.1"
+    "node": "v10.16.1"
   },
   "main": "index.js",
   "author": "Andrew Platt",

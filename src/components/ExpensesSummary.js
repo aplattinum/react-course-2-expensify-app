@@ -4,12 +4,6 @@ import expensesTotal from '../selectors/expenses-total';
 import {connect} from 'react-redux';
 import numeral from 'numeral';
 
-//mapStateToProps --> uses expenses filter to get 
-//the filtered expenses
-
-//use expenses.length to get the number of expenses
-//us expensesTotal(expenses) to get the total
-
 export const ExpensesSummary = ({expenses}) => {
     const expenseLength = expenses.length
     const expenseWord = expenses.length === 1 ? " expense " : " expenses " 
@@ -21,8 +15,6 @@ export const ExpensesSummary = ({expenses}) => {
     )
         }
     
-
-
 const mapStateToProps = (state) => ({
     expenses: filteredExpenses(state.expenses, state.filters)
 })

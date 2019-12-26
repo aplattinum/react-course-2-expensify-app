@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
-import { addExpense, editExpense, removeExpense} from './actions/expenses';
+import { startSetExpenses } from './actions/expenses';
 import { setTextFilter, 
         sortByDate,
         sortByAmount,
@@ -16,7 +16,6 @@ import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 import './firebase/firebase';
-//import './playground/promises';
 
 const store = configureStore();
 const jsx = (
@@ -27,7 +26,13 @@ const jsx = (
 
 
 const appRoot = document.getElementById('app');
-ReactDOM.render(jsx, appRoot)
+
+ReactDOM.render(<p>Loading...</p>, appRoot)
+
+store.dispatch(startSetExpenses()).then(() => {
+    ReactDOM.render(jsx, appRoot)
+})
+
 
 
 //////   //           //\\   ///////////  ///////////

@@ -48,12 +48,19 @@ export const startAddExpense = (expenseData = {}) => {
 }
 
 //REMOVE_EXPENSE - sends the id as string { id } --> pulls id out from expenses
-export const removeExpense = ({ id }= {}) => ( { 
+export const removeExpense = ({ id } = {}) => ( { 
     type: 'REMOVE_EXPENSE',
     id
 });
 
-//export const startRemoveExpense
+export const startRemoveExpense = ({id} = {}) => {
+    return (dispatch) => {
+        return database.ref(`expenses/${id}`).remove().then(() => {
+            dispatch(removeExpense({id}))
+        })
+        
+    }
+}
 
 //Edit Expense - sends id object and updates object
 export const editExpense = (id, updates) => ({
@@ -68,11 +75,6 @@ export const setExpenses = (expenses) => ({
     expenses
 })
 
-
-
-// 1) Fetch all expense data
-// 2) Parse data 
-// 3) Dispatch setExpenses 
 export const startSetExpenses = () => {
     return (dispatch) => {
         return database.ref('expenses').once("value").then((snapshot) => {
